@@ -1,4 +1,4 @@
-package org.danielszulc;
+package views;
 
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
@@ -23,7 +23,7 @@ public class LoginPanel  extends JFrame{
     }
 
     private JTextField nicknameField;
-    private JButton loginButton;
+    private JButton joinButton;
     private JPanel loginPanel;
     private JLabel infoLabel;
 }

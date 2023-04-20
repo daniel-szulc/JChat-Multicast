@@ -1,4 +1,4 @@
-package org.danielszulc;
+import views.LoginPanel;
 
 public class Main {
     public static void main(String[] args) {
