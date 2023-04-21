@@ -1,9 +1,4 @@
-/*import controllers.Client;
-import views.LoginPanel;*/
-
 import controllers.Client;
-
-
 import java.io.*;
 
 

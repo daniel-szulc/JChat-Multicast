@@ -1,7 +1,7 @@
 package abstracts;
 
 public interface ILoginPanel {
-    void setInfoMessage(String message);
+    void displayInformation(String message);
     void setNickname(String nickname);
     void handleLogin(IClient client);
     void exitPanel();

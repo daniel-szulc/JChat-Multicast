@@ -34,9 +34,9 @@ public class LoginPanel extends JFrame implements ILoginPanel {
     private JLabel infoLabel;
 
     @Override
-    public void setInfoMessage(String message) {
-        System.out.println("Login panel info: " + message);
-        infoLabel.setText(message);
+    public void displayInformation(String information) {
+        System.out.println("Login panel info: " + information);
+        infoLabel.setText(information);
         joinButton.setEnabled(true);
     }
 
