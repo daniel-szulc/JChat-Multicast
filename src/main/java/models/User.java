@@ -1,23 +1,23 @@
 package models;
 
-import utils.UserStatus.*;
+import utils.UserStatus;
 
 import java.util.UUID;
 
-public class User {
-    private String nickname;
+public class User{
+    private String name;
     private final String clientId;
     private Long lastActivity;
-    private Status status;
+    private UserStatus status;
 
-    public User(String nickname, String clientId) {
-        this.nickname = nickname;
+    public User(String name, String clientId) {
+        this.name = name;
         this.clientId = clientId;
-        status = Status.ACTIVE;
+        status = UserStatus.ACTIVE;
     }
 
-    public User(String nickname) {
-        this(nickname, UUID.randomUUID().toString());
+    public User(String name) {
+        this(name, UUID.randomUUID().toString());
     }
 
     public Long getLastActivity() {
@@ -28,23 +28,23 @@ public class User {
         this.lastActivity = lastActivity;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getName() {
+        return name;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getClientId() {
         return clientId;
     }
 
-    public Status getStatus() {
+    public UserStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(UserStatus status) {
         this.status = status;
     }
 }

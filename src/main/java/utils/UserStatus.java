@@ -1,10 +1,9 @@
 package utils;
-public class UserStatus {
-    public enum Status {
+
+    public enum UserStatus {
         ACTIVE,
         INACTIVE,
         DISCONNECTED,
         REJECTED
     }
 
-}
