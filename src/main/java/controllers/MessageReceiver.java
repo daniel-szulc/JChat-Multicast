@@ -8,17 +8,22 @@ import java.io.ObjectInputStream;
 import java.net.DatagramPacket;
 import java.net.MulticastSocket;
 
-public class MessageReceiver {
-    private MulticastSocket socket;
-    private IMessageListener messageListener;
+import static utils.Constants.MAX_MESSAGE_LENGTH;
+
+public class MessageReceiver extends Thread {
+    private final MulticastSocket socket;
+    private final IMessageListener messageListener;
+
 
     public MessageReceiver(MulticastSocket socket, IMessageListener messageListener) {
         this.socket = socket;
         this.messageListener = messageListener;
     }
 
-    public void start() {
-        byte[] buffer = new byte[1024];
+
+    @Override
+    public void run() {
+        byte[] buffer = new byte[MAX_MESSAGE_LENGTH];
         DatagramPacket incomingPacket = new DatagramPacket(buffer, buffer.length);
 
         while (true) {
@@ -34,8 +39,11 @@ public class MessageReceiver {
                 messageListener.onMessageReceived(message);
 
             } catch (Exception e) {
-                e.printStackTrace();
+                    interrupt();
+                    break;
             }
         }
     }
+
+
 }

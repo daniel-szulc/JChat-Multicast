@@ -5,7 +5,7 @@ import utils.UserStatus;
 import java.util.UUID;
 
 public class User{
-    private String name;
+    private final String name;
     private final String clientId;
     private Long lastActivity;
     private UserStatus status;
@@ -18,6 +18,7 @@ public class User{
 
     public User(String name) {
         this(name, UUID.randomUUID().toString());
+        status = UserStatus.DISCONNECTED;
     }
 
     public Long getLastActivity() {
@@ -30,10 +31,6 @@ public class User{
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getClientId() {

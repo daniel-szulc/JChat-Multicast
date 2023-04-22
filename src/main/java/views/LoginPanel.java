@@ -2,6 +2,7 @@ package views;
 
 import abstracts.IClient;
 import abstracts.ILoginPanel;
+import utils.MessageType;
 
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
@@ -11,6 +12,10 @@ public class LoginPanel extends JFrame implements ILoginPanel {
 
 
     public LoginPanel(IClient client) {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception ignore) {
+        }
         setContentPane(loginPanel);
         this.setTitle("Chat");
         this.setSize(250, 300);
@@ -26,6 +31,7 @@ public class LoginPanel extends JFrame implements ILoginPanel {
                 dispose();
             }
         });
+        SwingUtilities.updateComponentTreeUI(this);
     }
 
     private JTextField nicknameField;
@@ -34,25 +40,31 @@ public class LoginPanel extends JFrame implements ILoginPanel {
     private JLabel infoLabel;
 
     @Override
-    public void displayInformation(String information) {
-        System.out.println("Login panel info: " + information);
-        infoLabel.setText(information);
+    public void displayInformation(MessageType information) {
+        String informationString = "";
+        switch (information) {
+            case LOGIN_FAILURE_NICKNAME_TAKEN -> informationString = "Nickname is already taken";
+            case LOGIN_FAILURE_MAX_USERS_REACHED -> informationString = "Max users reached";
+        }
+        infoLabel.setText(informationString);
         joinButton.setEnabled(true);
+        nicknameField.setEnabled(true);
     }
 
-    @Override
-    public void setNickname(String nickname) {
-        nicknameField.setText(nickname);
-    }
     @Override
     public void handleLogin(IClient client) {
         String nickname = nicknameField.getText();
+        if(nickname.length() == 0){
+            infoLabel.setText("Enter your username!");
+            return;
+        }
         client.login(nickname);
         joinButton.setEnabled(false);
+        nicknameField.setEnabled(false);
     }
 
     @Override
-    public void exitPanel(){
+    public void disposePanel(){
         setVisible(false);
         dispose();
     }

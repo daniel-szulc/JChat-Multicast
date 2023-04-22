@@ -7,11 +7,11 @@ import java.util.Date;
 
 
 public class Message implements Serializable {
-    private String sender;
+    private final String sender;
     private String receiver;
     private String content;
-    private Date timestamp;
-    private MessageType messageType;
+    private final Date timestamp;
+    private final MessageType messageType;
 
     public Message(MessageType messageType, String sender, String content, String receiver) {
         this(messageType, sender, content);

@@ -1,6 +1,8 @@
 package controllers;
 
+import abstracts.IMessageSender;
 import models.Message;
+import models.User;
 import utils.MessageType;
 
 import java.io.ByteArrayOutputStream;
@@ -13,25 +15,33 @@ import java.net.MulticastSocket;
 import static utils.Constants.MULTICAST_ADDRESS;
 import static utils.Constants.PORT;
 
-public class MessageSender {
-    private MulticastSocket socket;
-    private String senderName;
+public class MessageSender implements IMessageSender {
+    private final MulticastSocket socket;
+    private final String clientId;
+    private final String username;
 
-    public MessageSender(MulticastSocket socket, String username) {
+    public MessageSender(MulticastSocket socket, User client) {
         this.socket = socket;
-        senderName = username;
+        clientId = client.getClientId();
+        username = client.getName();
     }
 
+    @Override
     public void sendMessage(String content) {
-        Message message = new Message(MessageType.MESSAGE, senderName, content);
+        Message message = new Message(MessageType.MESSAGE, clientId, content);
         sendMessage(message);
     }
-
+    @Override
     public void sendMessage(MessageType messageType) {
-        Message message = new Message(messageType, senderName);
+        Message message = new Message(messageType, clientId, username);
         sendMessage(message);
     }
-
+    @Override
+    public void sendMessage(MessageType messageType, String receiverId) {
+        Message message = new Message(messageType, clientId, username ,receiverId);
+        sendMessage(message);
+    }
+    @Override
     public void sendMessage(Message message) {
         try {
             ByteArrayOutputStream bos = new ByteArrayOutputStream();

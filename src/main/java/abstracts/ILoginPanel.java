@@ -1,8 +1,11 @@
 package abstracts;
 
+import utils.MessageType;
+
 public interface ILoginPanel {
-    void displayInformation(String message);
-    void setNickname(String nickname);
+    void displayInformation(MessageType message);
     void handleLogin(IClient client);
-    void exitPanel();
+    void disposePanel();
+
+    void setVisible(boolean visible);
 }

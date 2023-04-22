@@ -50,7 +50,10 @@ JChat-MultiCast is designed with a decentralized architecture, which eliminates 
 ## How it Works 🤖
 JChat-Multicast uses the multicast protocol to send messages between users. When a user sends a message, it is broadcast to all users in the multicast group. Each user receives the message and displays it in their chat window.
 
-New users can join the chat by sending a "JOIN_REQUEST" message to the multicast group. Other users in the group will respond with an "ACCEPT" message if the user can join, or a "NICKNAME_TAKEN" or "MAX_USERS_REACHED" message if the user cannot join.
+New users can join the chat by sending a "LOGIN_REQUEST" message to the multicast group. Other users in the group will respond with an "LOGIN_SUCCESS" message if the user can join, or a "NICKNAME_TAKEN" or "MAX_USERS_REACHED" message if the user cannot join.
 
-When a user leaves the chat, they send a "LEAVE_CHAT" message to the multicast group. Other users will receive the message and remove the user from their user list.
+When a user leaves the chat, they send a "LOGOUT" message to the multicast group. Other users will receive the message and remove the user from their user list.
 
+## Screenshot
+
+<img src="/JChat.jpg" alt="JChat-screenshot"/>

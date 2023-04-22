@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JChat-Multicast:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JChat_Multicast_jar</output-path>
+    <root id="archive" name="JChat-Multicast.jar">
+      <element id="module-output" name="JChat-Multicast" />
+    </root>
+  </artifact>
+</component>

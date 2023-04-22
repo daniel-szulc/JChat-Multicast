@@ -3,8 +3,12 @@ package utils;
 public enum MessageType {
     LOGIN,
     LOGIN_SUCCESS,
+    LOGIN_FAILURE_NICKNAME_TAKEN,
+    LOGIN_FAILURE_MAX_USERS_REACHED,
     LOGIN_REQUEST,
     LOGOUT,
-    MESSAGE,
+    ACTIVITY_CONFIRMATION,
+    MESSAGE
 }
+
 
