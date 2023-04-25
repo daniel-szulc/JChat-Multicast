@@ -32,10 +32,10 @@ public class UserSessionMonitor extends Thread{
                     continue;
                 }
                 long currentTime = System.currentTimeMillis();
-                if(currentTime - user.getLastActivity() > ACTIVITY_INTERVAL * 3) {
+                if(currentTime - user.getLastActivity() > ACTIVITY_INTERVAL * 5) {
                     user.setStatus(UserStatus.DISCONNECTED);
                 }
-                else if (currentTime - user.getLastActivity() > ACTIVITY_INTERVAL * 5) {
+                else if (currentTime - user.getLastActivity() > ACTIVITY_INTERVAL * 3) {
                         user.setStatus(UserStatus.INACTIVE);
                 } else {
                     user.setStatus(UserStatus.ACTIVE);
